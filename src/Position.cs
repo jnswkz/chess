@@ -1,3 +1,5 @@
+namespace position
+{
 using UnityEngine;
 
 public class Position : MonoBehaviour
@@ -19,4 +21,5 @@ public class Position : MonoBehaviour
     {
         return new Vector2(x, y); 
     }
+}
 }
