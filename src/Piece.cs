@@ -7,17 +7,17 @@ namespace piece
     public abstract class Piece : MonoBehaviour
     {
         public string Name;
-        public string Color;
+        public string Color;//black or white
         public Position pos;
-        public bool isMoved;
-        public List<List<Position>> validMoves;
+        public bool haveMoved;//check if Rook/King/Pawn have moved before
+        public List<List<Position>> validMoves; // list of valid positions where pieces can travel to 
 
         Piece(string Name,string Color,Position pos)
         {
             this.Name = Name;
             this.Color = Color;
             this.pos = pos;
-            this.isMoved = false;
+            this.haveMoved = false;
             this.validMoves = new List<List<Position>>();
         }
 
