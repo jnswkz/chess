@@ -1,25 +1,14 @@
 namespace position
 {
-using UnityEngine;
-
-public class Position : MonoBehaviour
+    using System;
+    using System.Collections.Generic;
+    using UnityEngine;
+public class Position 
 {
-    int x, y;
-    void Start()
-    {
-        x = 0;
-        y = 0;
-    }
+        public int column;//a-h
+        public int row;//1-8
 
-    public void setPos(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-    }
 
-    public Vector2 getPos()
-    {
-        return new Vector2(x, y); 
-    }
+
 }
 }
