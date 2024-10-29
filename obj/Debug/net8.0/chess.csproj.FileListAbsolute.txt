@@ -12,3 +12,11 @@ C:\Users\jns\Documents\chess\obj\Debug\net8.0\refint\chess.dll
 C:\Users\jns\Documents\chess\obj\Debug\net8.0\chess.pdb
 C:\Users\jns\Documents\chess\obj\Debug\net8.0\chess.genruntimeconfig.cache
 C:\Users\jns\Documents\chess\obj\Debug\net8.0\ref\chess.dll
+F:\Solution1\Chess\obj\Debug\net8.0\chess.GeneratedMSBuildEditorConfig.editorconfig
+F:\Solution1\Chess\obj\Debug\net8.0\chess.AssemblyInfoInputs.cache
+F:\Solution1\Chess\obj\Debug\net8.0\chess.AssemblyInfo.cs
+F:\Solution1\Chess\obj\Debug\net8.0\chess.csproj.CoreCompileInputs.cache
+F:\Solution1\Chess\obj\Debug\net8.0\chess.sourcelink.json
+F:\Solution1\Chess\obj\Debug\net8.0\chess.dll
+F:\Solution1\Chess\obj\Debug\net8.0\refint\chess.dll
+F:\Solution1\Chess\obj\Debug\net8.0\chess.pdb
