@@ -61,6 +61,6 @@ namespace position
         {
             return Math.Abs(this.column - position.column) <= 1 && Math.Abs(this.row - position.row) <= 1;
         }
-s
+
     }
 }
