@@ -1,7 +1,6 @@
 namespace piece
 {
     using position;
-    using UnityEngine;
     using System.Collections.Generic;
 
     public abstract class Piece 

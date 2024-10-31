@@ -2,7 +2,6 @@ namespace position
 {
     using System;
     using System.Collections.Generic;
-    using UnityEngine;
     public class Position 
     {
         public int column;//a-h
@@ -32,10 +31,10 @@ namespace position
             this.row = 0;
         }
 
-        public toString()
+        /*public toString()
         {
             return (char)(column + 'a') + (char)(row + '1');
-        }
+        }*/
 
         public bool Equals(Position position)
         {
