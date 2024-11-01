@@ -1,4 +1,4 @@
-namespace piece
+namespace Piece
 {
     using position;
     using System.Collections.Generic;
