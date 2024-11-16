@@ -8,49 +8,49 @@ public class Rook : Piece
         base.Start();
     }
 
-    public override void Refresh_Valid_Moves()
+    public override void RefreshValidMoves()
     {
-        base.Refresh_Valid_Moves();
+        base.RefreshValidMoves();
 
         ValidMoves.Clear();
         int EnemyColor = Color == 0 ? 1 : 0;
         // di thang
 
         int tempY = 1;
-            while (myMap.get_Color_At_Position(pos.getPos().x, pos.getPos().y + tempY) == -1)
+            while (myMap.getColorAtPosition(pos.getPos().x, pos.getPos().y + tempY) == -1)
             {
                  ValidMoves.Add(new Vector2Int(pos.getPos().x, pos.getPos().y + tempY));
                  tempY++;
             }
-           if (myMap.get_Color_At_Position(pos.getPos().x, pos.getPos().y + tempY) == EnemyColor) 
+           if (myMap.getColorAtPosition(pos.getPos().x, pos.getPos().y + tempY) == EnemyColor) 
                 ValidMoves.Add(new Vector2Int(pos.getPos().x, pos.getPos().y + tempY));
 
             tempY = 1;
-            while (myMap.get_Color_At_Position(pos.getPos().x, pos.getPos().y - tempY) == -1)
+            while (myMap.getColorAtPosition(pos.getPos().x, pos.getPos().y - tempY) == -1)
             {
                 ValidMoves.Add(new Vector2Int(pos.getPos().x, pos.getPos().y - tempY));
                 tempY++;
             }
-            if (myMap.get_Color_At_Position(pos.getPos().x, pos.getPos().y - tempY) == EnemyColor)
+            if (myMap.getColorAtPosition(pos.getPos().x, pos.getPos().y - tempY) == EnemyColor)
                  ValidMoves.Add(new Vector2Int(pos.getPos().x, pos.getPos().y - tempY));
 
         //di ngang
           int tempX = 1;
-             while (myMap.get_Color_At_Position(pos.getPos().x + tempX, pos.getPos().y) == -1)
+             while (myMap.getColorAtPosition(pos.getPos().x + tempX, pos.getPos().y) == -1)
              {
                   ValidMoves.Add(new Vector2Int(pos.getPos().x + tempX, pos.getPos().y));
                  tempX++;
              }
-            if (myMap.get_Color_At_Position(pos.getPos().x + tempX, pos.getPos().y) == EnemyColor)
+            if (myMap.getColorAtPosition(pos.getPos().x + tempX, pos.getPos().y) == EnemyColor)
             ValidMoves.Add(new Vector2Int(pos.getPos().x + tempX, pos.getPos().y ));
 
             tempX = 1;
-            while (myMap.get_Color_At_Position(pos.getPos().x - tempX, pos.getPos().y) == -1)
+            while (myMap.getColorAtPosition(pos.getPos().x - tempX, pos.getPos().y) == -1)
             {
                ValidMoves.Add(new Vector2Int(pos.getPos().x - tempX, pos.getPos().y));
               tempX++;
             }
-            if (myMap.get_Color_At_Position(pos.getPos().x- tempX, pos.getPos().y ) == EnemyColor)
+            if (myMap.getColorAtPosition(pos.getPos().x- tempX, pos.getPos().y ) == EnemyColor)
                 ValidMoves.Add(new Vector2Int(pos.getPos().x - tempX, pos.getPos().y ));
     }
 }

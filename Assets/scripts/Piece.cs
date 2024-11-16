@@ -15,16 +15,16 @@ public class Piece : MonoBehaviour
         myMap = Map.Instance;
         
     }
-    public int get_Color()
+    public int getColor()
     {
         return Color;
     }
 
-    public void set_Color(int color)
+    public void setColor(int color)
     {
         Color = color;
     }
-    public void set_Position(int x, int y)
+    public void setPosition(int x, int y)
     {
         if (myMap == null)
         {
@@ -38,8 +38,8 @@ public class Piece : MonoBehaviour
             
             pos.setPos(x, y);
             myMap.updateRealPosition(this, x, y);
-            myMap.Replace_At(this, x, y);
-            Refresh_Valid_Moves();
+            myMap.ReplaceAt(this, x, y);
+            RefreshValidMoves();
         }
 
 
@@ -53,7 +53,7 @@ public class Piece : MonoBehaviour
         }
         return ValidMoves;
     }
-    virtual public void Refresh_Valid_Moves()
+    virtual public void RefreshValidMoves()
     {
 
     }
@@ -62,12 +62,12 @@ public class Piece : MonoBehaviour
     {
         yield return new WaitForSeconds(delay); // Delay tính theo giây
                                                 // Thực hiện hành động sau delay
-        set_Position(x, y);
+        setPosition(x, y);
         // Khi hết thời gian sẽ gọi lại hàm ban đầu để thực hiện những bước cần thực hiện
     }
-    public bool check_Valid_Move(Vector2Int newPos)
+    public bool checkValidMove(Vector2Int newPos)
     {
-        for (int i = 0; i  < ValidMoves.Count; i++)
+        for (int i = 0; i  < getValidMoves().Count; i++)
         {
             if (ValidMoves[i] == newPos)
             {

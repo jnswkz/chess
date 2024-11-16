@@ -1,14 +1,14 @@
 using UnityEngine;
 public class Clicker : MonoBehaviour
 {
-    Camera m_Camera;
+    Camera mCamera;
 
     Map myMap;
     bool hasChosen = false;
     Piece chosenPiece; 
     void Awake()
     {
-        m_Camera = Camera.main;
+        mCamera = Camera.main;
     }
     private void Start()
     {
@@ -18,7 +18,7 @@ public class Clicker : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 mousePosition = m_Camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePosition = mCamera.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePosition,Vector2.zero);
             Debug.DrawRay(mousePosition, Vector2.zero, Color.red, 2f);
             if (hit.collider != null && !hasChosen)
@@ -28,7 +28,7 @@ public class Clicker : MonoBehaviour
                 
                 if (chosenPiece)
                 {
-                    myMap.Show_Valid_Moves(chosenPiece.getValidMoves());
+                    myMap.ShowValidMoves(chosenPiece.getValidMoves());
                 }
 
                 hasChosen = true;
@@ -37,8 +37,8 @@ public class Clicker : MonoBehaviour
             {
                 myMap.removePreviousDot();
 
-                Debug.Log(myMap.Real_Position_to_Matrix_Position(mousePosition));
-                Vector2Int newPos = myMap.Real_Position_to_Matrix_Position(mousePosition);
+                Debug.Log(myMap.RealPositiontoMatrixPosition(mousePosition));
+                Vector2Int newPos = myMap.RealPositiontoMatrixPosition(mousePosition);
                 myMap.movePiece(chosenPiece, chosenPiece.getPos(), newPos);
 
                

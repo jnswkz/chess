@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 public class King : Piece
 {
-    List <Vector2Int> King_Can_Move;
+    List <Vector2Int> KingCanMove;
     override protected void Start()
     {
         base.Start();
-        King_Can_Move = new List<Vector2Int>
+        KingCanMove = new List<Vector2Int>
         {
             new Vector2Int(-1,1),
             new Vector2Int(0,1),
@@ -19,16 +19,16 @@ public class King : Piece
         };
     }
 
-    public override void Refresh_Valid_Moves()
+    public override void RefreshValidMoves()
     {
-        base.Refresh_Valid_Moves();
+        base.RefreshValidMoves();
         ValidMoves.Clear();
-        for (int i = 0; i < King_Can_Move.Count; i++)
+        for (int i = 0; i < KingCanMove.Count; i++)
         {
-            int ColorOfTarget = myMap.get_Color_At_Position(pos.getPos().x + King_Can_Move[i].x, pos.getPos().y + King_Can_Move[i].y);
+            int ColorOfTarget = myMap.getColorAtPosition(pos.getPos().x + KingCanMove[i].x, pos.getPos().y + KingCanMove[i].y);
             if (ColorOfTarget != Color && ColorOfTarget != -2)
             {
-                ValidMoves.Add(new Vector2Int(pos.getPos().x + King_Can_Move[i].x, pos.getPos().y + King_Can_Move[i].y));
+                ValidMoves.Add(new Vector2Int(pos.getPos().x + KingCanMove[i].x, pos.getPos().y + KingCanMove[i].y));
             }
         }
     }

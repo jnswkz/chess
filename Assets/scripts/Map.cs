@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using NUnit.Framework;
+using TMPro;
 public class Map : MonoBehaviour
 {
 
@@ -18,7 +20,7 @@ public class Map : MonoBehaviour
     //4-Knight
     //5-Rook
     [SerializeField] List<Piece> WhitePieces;
-    [SerializeField] List<Piece> NiggaPieces;
+    [SerializeField] List<Piece> BlackPieces;
 
     [SerializeField] int CurrentSide;
 
@@ -51,12 +53,13 @@ public class Map : MonoBehaviour
         }
 
     }
+
     public void Start_Game()
     {
         for (int i = 1; i <= 8; i++)
         {
             Piece temp = Instantiate(WhitePiecesPrefaps[0], new Vector3(0, 0, 0), Quaternion.identity);
-            temp.set_Position(i, 2);
+            temp.setPosition(i, 2);
             WhitePieces.Add(temp);
             
           
@@ -66,32 +69,32 @@ public class Map : MonoBehaviour
         for (int i = 1; i <= 8; i++)
         {
             Piece temp = Instantiate(BlackPiecesPrefaps[0], new Vector3(0, 0, 0), Quaternion.identity);
-            temp.set_Position(i, 7);
-            NiggaPieces.Add(temp);
+            temp.setPosition(i, 7);
+            BlackPieces.Add(temp);
             
 
         }
         //Summon Pawns
         Piece King = Instantiate(WhitePiecesPrefaps[1], new Vector3(0, 0, 0), Quaternion.identity);
-        King.set_Position(5, 1);
+        King.setPosition(5, 1);
         WhitePieces.Add(King);
         
 
         King = Instantiate(BlackPiecesPrefaps[1], new Vector3(0, 0, 0), Quaternion.identity);
-        King.set_Position(5, 8);
-        NiggaPieces.Add(King);
+        King.setPosition(5, 8);
+        BlackPieces.Add(King);
         
 
         //Summon Kings
 
         Piece Queen = Instantiate(WhitePiecesPrefaps[2], new Vector3(0, 0, 0), Quaternion.identity);
-        Queen.set_Position(4, 1);
+        Queen.setPosition(4, 1);
         WhitePieces.Add(Queen);
      
 
         Queen = Instantiate(BlackPiecesPrefaps[2], new Vector3(0, 0, 0), Quaternion.identity);
-        Queen.set_Position(4, 8);
-        NiggaPieces.Add(Queen);
+        Queen.setPosition(4, 8);
+        BlackPieces.Add(Queen);
         
 
 
@@ -100,48 +103,95 @@ public class Map : MonoBehaviour
         for (int i = 1; i <= 2; i++)
         {
             Piece WBishop = Instantiate(WhitePiecesPrefaps[3], new Vector3(0, 0, 0), Quaternion.identity);
-            WBishop.set_Position(i * 3, 1);
+            WBishop.setPosition(i * 3, 1);
             WhitePieces.Add(WBishop);
             
 
 
             Piece BBishop = Instantiate(BlackPiecesPrefaps[3], new Vector3(0, 0, 0), Quaternion.identity);
-            BBishop.set_Position(i * 3, 8);
-            NiggaPieces.Add(BBishop);
+            BBishop.setPosition(i * 3, 8);
+            BlackPieces.Add(BBishop);
            
         }
         //Summon Bishops
         for (int i = 0; i <= 1; i++)
         {
-            Piece W_Knight = Instantiate(WhitePiecesPrefaps[4], new Vector3(0, 0, 0), Quaternion.identity);
-            W_Knight.set_Position(i *5 + 2, 1);
-            WhitePieces.Add(W_Knight);
+            Piece WKnight = Instantiate(WhitePiecesPrefaps[4], new Vector3(0, 0, 0), Quaternion.identity);
+            WKnight.setPosition(i *5 + 2, 1);
+            WhitePieces.Add(WKnight);
            
 
-            Piece B_Knight = Instantiate(BlackPiecesPrefaps[4], new Vector3(0, 0, 0), Quaternion.identity);
-            B_Knight.set_Position(i * 5 +2, 8);
-            NiggaPieces.Add(B_Knight);
+            Piece BKnight = Instantiate(BlackPiecesPrefaps[4], new Vector3(0, 0, 0), Quaternion.identity);
+            BKnight.setPosition(i * 5 +2, 8);
+            BlackPieces.Add(BKnight);
            
         }
         //Summon Knights
 
         for (int i = 0; i <= 1; i++)
         {
-            Piece W_Rook = Instantiate(WhitePiecesPrefaps[5], new Vector3(0, 0, 0), Quaternion.identity);
-            W_Rook.set_Position(i * 7 + 1, 1);
-            WhitePieces.Add(W_Rook);
+            Piece WRook = Instantiate(WhitePiecesPrefaps[5], new Vector3(0, 0, 0), Quaternion.identity);
+            WRook.setPosition(i * 7 + 1, 1);
+            WhitePieces.Add(WRook);
             
 
-            Piece B_Rook = Instantiate(BlackPiecesPrefaps[5], new Vector3(0, 0, 0), Quaternion.identity);
-            B_Rook.set_Position(i * 7 + 1, 8);
-            NiggaPieces.Add(B_Rook);
+            Piece BRook = Instantiate(BlackPiecesPrefaps[5], new Vector3(0, 0, 0), Quaternion.identity);
+            BRook.setPosition(i * 7 + 1, 8);
+            BlackPieces.Add(BRook);
            
         }
         //Summon Rooks
-        Piece temp2 = Instantiate(WhitePiecesPrefaps[3], new Vector3(0, 0, 0), Quaternion.identity);
-        temp2.set_Position(3, 4);
+        // Piece temp2 = Instantiate(WhitePiecesPrefaps[3], new Vector3(0, 0, 0), Quaternion.identity);
+        // temp2.setPosition(3, 4);
 
 
+    }
+    public TMP_Text winText;
+    public void AnnounceWin(int winner)
+    {
+        if (winner == 0)
+        {
+            winText.text = "Black Win";
+        }
+        else if (winner == 1)
+        {
+            winText.text = "White Win";
+        }
+        else
+        {
+            winText.text = "Draw";
+        }
+        winText.gameObject.SetActive(true); // Show the text
+    }
+
+
+    public void StopGame(int winner)
+    {
+        if (winner == 0)
+        {
+            FindFirstObjectByType<Map>().AnnounceWin(0);
+        }
+        else if (winner == 1)
+        {
+            Debug.Log("White Win");
+            FindFirstObjectByType<Map>().AnnounceWin(1);
+        }
+        else
+        {
+            Debug.Log("Draw");
+            FindFirstObjectByType<Map>().AnnounceWin(-1);
+        }
+
+        for (int i = 0; i < WhitePieces.Count; i++)
+        {
+            Destroy(WhitePieces[i].gameObject);
+        }
+        for (int i = 0; i < BlackPieces.Count; i++)
+        {
+            Destroy(BlackPieces[i].gameObject);
+        }
+        WhitePieces.Clear();
+        BlackPieces.Clear();
     }
     public Vector2 getRealPosition(int x, int y)
     {
@@ -158,23 +208,23 @@ public class Map : MonoBehaviour
         
     }
 
-    public int get_Color_At_Position(int x, int y)
+    public int getColorAtPosition(int x, int y)
     {
         if (x < 1 || x > 8 || y < 1 || y > 8)
         {
             return -2;
         }
-        else if (ChessBoard[x, y] != null) return ChessBoard[x, y].get_Color();
+        else if (ChessBoard[x, y] != null) return ChessBoard[x, y].getColor();
         else return -1;
     }
 
-    public void Replace_At(Piece NewPiece, int x, int y)
+    public void ReplaceAt(Piece NewPiece, int x, int y)
     {
         Piece currentPiece = ChessBoard[x, y];
         if (currentPiece != null)
         {
-            if (currentPiece.get_Color() == 0) WhitePieces.Remove(currentPiece);
-            else NiggaPieces.Remove(currentPiece);
+            if (currentPiece.getColor() == 0) WhitePieces.Remove(currentPiece);
+            else BlackPieces.Remove(currentPiece);
 
             Destroy(currentPiece.gameObject);
         }
@@ -183,13 +233,17 @@ public class Map : MonoBehaviour
 
     public void movePiece(Piece piece, Vector2Int OldPos, Vector2Int NewPos)
     {
-        
-        if (piece.check_Valid_Move(NewPos))
+        if (piece.checkValidMove(NewPos))
         {
             ChessBoard[OldPos.x, OldPos.y] = null;
-            piece.set_Position(NewPos.x, NewPos.y);
+            piece.setPosition(NewPos.x, NewPos.y);
+            if ( IsWin() != -1)
+            {
+                StopGame(IsWin());
+                
+            }
             UpdateCurrentSide();
-            Refresh_All_Valid_Moves();
+            RefreshAllValidMoves();
         }
     } 
     public void removePreviousDot()
@@ -202,7 +256,7 @@ public class Map : MonoBehaviour
         }
     }
     
-    public void Show_Valid_Moves(List<Vector2Int> ValidMoves)
+    public void ShowValidMoves(List<Vector2Int> ValidMoves)
     {
         Debug.Log("Show");
         removePreviousDot();
@@ -216,19 +270,19 @@ public class Map : MonoBehaviour
         }
     }//Use to show chosen pieces's valid moves
 
-    public void Refresh_All_Valid_Moves()
+    public void RefreshAllValidMoves()
     {
         for (int i = 0; i < WhitePieces.Count; i++)
         {
-            WhitePieces[i].Refresh_Valid_Moves();
+            WhitePieces[i].RefreshValidMoves();
         }
-        for (int i = 0; i < NiggaPieces.Count; i++)
+        for (int i = 0; i < BlackPieces.Count; i++)
         {
-            NiggaPieces[i].Refresh_Valid_Moves();
+            BlackPieces[i].RefreshValidMoves();
         }
     }//Use to refresh all pieces's valid moves after a turn
 
-    public Vector2Int Real_Position_to_Matrix_Position (Vector2 realPosition) 
+    public Vector2Int RealPositiontoMatrixPosition (Vector2 realPosition) 
     {
         Vector2Int MatrixPos = new Vector2Int();
         MatrixPos.x = (int)Mathf.Ceil((realPosition.x - checkPoint.position.x) / SquareWidth);
@@ -245,5 +299,41 @@ public class Map : MonoBehaviour
     public void UpdateCurrentSide()
     {
         CurrentSide = (CurrentSide == 1)? 0 : 1;
+    }
+
+    public int IsWin(){ // 1 : white, 0 : black, -1 : not win, 2 : draw (update later)
+        int currentSide = GetCurrentSide();
+        List<Piece> currentPieces = (currentSide == 0)? WhitePieces : BlackPieces;  
+        // Zero King found
+        bool kingFound = false;
+        for (int i = 0; i < WhitePieces.Count; i++)
+        {
+            if (WhitePieces[i].GetType() == typeof(King))
+            {
+                kingFound = true;
+                break;
+            }
+        }
+        if (!kingFound) return 0;
+        kingFound = false;
+        for (int i = 0; i < BlackPieces.Count; i++)
+        {
+            if (BlackPieces[i].GetType() == typeof(King))
+            {
+                kingFound = true;
+                break;
+            }
+        }
+        if (!kingFound) return 1;
+
+        // check draw (update later) 
+
+        // for each piece, get all valid moves, if there's no valid move, then the other side wins. Currently we can't check this
+        for (int i = 0; i < currentPieces.Count; i++)
+        {
+            if (currentPieces[i].getValidMoves().Count > 0) return -1;
+        }
+ 
+        return (currentSide == 0)? 1 : 0;
     }
 }
