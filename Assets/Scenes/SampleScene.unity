@@ -1053,7 +1053,7 @@ MonoBehaviour:
   BlackPieces: []
   CurrentSide: 0
   DotPrefap: {fileID: 3937163987231699389, guid: a1393137b8901834cb91985d692db58f, type: 3}
-  winText: {fileID: 0}
+  winText: {fileID: 1880018139}
 --- !u!212 &987902248
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1278,7 +1278,7 @@ GameObject:
   - component: {fileID: 1880018139}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
