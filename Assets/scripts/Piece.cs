@@ -45,6 +45,10 @@ public class Piece : MonoBehaviour
 
 
     }
+    public List<Vector2Int> getCanMoves()
+    {
+        return ValidMoves;
+    }
     public List<Vector2Int> getValidMoves()
     {
         if (myMap.GetCurrentSide() != Color)

@@ -8,9 +8,9 @@ public class Map : MonoBehaviour
     [SerializeField] Transform checkPoint;
     [SerializeField] float SquareWidth;
 
-    [SerializeField] Piece[] WhitePiecesPrefaps;
+    [SerializeField] Piece[] WhitePiecesPrefabs;
     //(Prefaps of white pieces)
-    [SerializeField] Piece[] BlackPiecesPrefaps;
+    [SerializeField] Piece[] BlackPiecesPrefabs;
     //(Prefaps of black pieces)
     
     //0-Pawn
@@ -25,6 +25,8 @@ public class Map : MonoBehaviour
     [SerializeField] int CurrentSide;
 
     Piece[,] ChessBoard = new Piece[9, 9];
+    Piece WhiteKing;
+    Piece BlackKing;
 
     [SerializeField] GameObject DotPrefap;
 
@@ -58,9 +60,9 @@ public class Map : MonoBehaviour
     {
         for (int i = 1; i <= 8; i++)
         {
-            Piece temp = Instantiate(WhitePiecesPrefaps[0], new Vector3(0, 0, 0), Quaternion.identity);
+            Piece temp = Instantiate(WhitePiecesPrefabs[0], new Vector3(0, 0, 0), Quaternion.identity);
             temp.setPosition(i, 2);
-            WhitePieces.Add(temp);
+            WhitePieces.Add(temp); 
             
           
             
@@ -68,31 +70,33 @@ public class Map : MonoBehaviour
         
         for (int i = 1; i <= 8; i++)
         {
-            Piece temp = Instantiate(BlackPiecesPrefaps[0], new Vector3(0, 0, 0), Quaternion.identity);
+            Piece temp = Instantiate(BlackPiecesPrefabs[0], new Vector3(0, 0, 0), Quaternion.identity);
             temp.setPosition(i, 7);
             BlackPieces.Add(temp);
             
 
         }
         //Summon Pawns
-        Piece King = Instantiate(WhitePiecesPrefaps[1], new Vector3(0, 0, 0), Quaternion.identity);
+        Piece King = Instantiate(WhitePiecesPrefabs[1], new Vector3(0, 0, 0), Quaternion.identity);
         King.setPosition(5, 1);
         WhitePieces.Add(King);
+        WhiteKing = King;
         
 
-        King = Instantiate(BlackPiecesPrefaps[1], new Vector3(0, 0, 0), Quaternion.identity);
+        King = Instantiate(BlackPiecesPrefabs[1], new Vector3(0, 0, 0), Quaternion.identity);
         King.setPosition(5, 8);
         BlackPieces.Add(King);
+        BlackKing = King;
         
 
         //Summon Kings
 
-        Piece Queen = Instantiate(WhitePiecesPrefaps[2], new Vector3(0, 0, 0), Quaternion.identity);
+        Piece Queen = Instantiate(WhitePiecesPrefabs[2], new Vector3(0, 0, 0), Quaternion.identity);
         Queen.setPosition(4, 1);
         WhitePieces.Add(Queen);
      
 
-        Queen = Instantiate(BlackPiecesPrefaps[2], new Vector3(0, 0, 0), Quaternion.identity);
+        Queen = Instantiate(BlackPiecesPrefabs[2], new Vector3(0, 0, 0), Quaternion.identity);
         Queen.setPosition(4, 8);
         BlackPieces.Add(Queen);
         
@@ -102,13 +106,13 @@ public class Map : MonoBehaviour
 
         for (int i = 1; i <= 2; i++)
         {
-            Piece WBishop = Instantiate(WhitePiecesPrefaps[3], new Vector3(0, 0, 0), Quaternion.identity);
+            Piece WBishop = Instantiate(WhitePiecesPrefabs[3], new Vector3(0, 0, 0), Quaternion.identity);
             WBishop.setPosition(i * 3, 1);
             WhitePieces.Add(WBishop);
             
 
 
-            Piece BBishop = Instantiate(BlackPiecesPrefaps[3], new Vector3(0, 0, 0), Quaternion.identity);
+            Piece BBishop = Instantiate(BlackPiecesPrefabs[3], new Vector3(0, 0, 0), Quaternion.identity);
             BBishop.setPosition(i * 3, 8);
             BlackPieces.Add(BBishop);
            
@@ -116,12 +120,12 @@ public class Map : MonoBehaviour
         //Summon Bishops
         for (int i = 0; i <= 1; i++)
         {
-            Piece WKnight = Instantiate(WhitePiecesPrefaps[4], new Vector3(0, 0, 0), Quaternion.identity);
+            Piece WKnight = Instantiate(WhitePiecesPrefabs[4], new Vector3(0, 0, 0), Quaternion.identity);
             WKnight.setPosition(i *5 + 2, 1);
             WhitePieces.Add(WKnight);
            
 
-            Piece BKnight = Instantiate(BlackPiecesPrefaps[4], new Vector3(0, 0, 0), Quaternion.identity);
+            Piece BKnight = Instantiate(BlackPiecesPrefabs[4], new Vector3(0, 0, 0), Quaternion.identity);
             BKnight.setPosition(i * 5 +2, 8);
             BlackPieces.Add(BKnight);
            
@@ -130,18 +134,18 @@ public class Map : MonoBehaviour
 
         for (int i = 0; i <= 1; i++)
         {
-            Piece WRook = Instantiate(WhitePiecesPrefaps[5], new Vector3(0, 0, 0), Quaternion.identity);
+            Piece WRook = Instantiate(WhitePiecesPrefabs[5], new Vector3(0, 0, 0), Quaternion.identity);
             WRook.setPosition(i * 7 + 1, 1);
             WhitePieces.Add(WRook);
             
 
-            Piece BRook = Instantiate(BlackPiecesPrefaps[5], new Vector3(0, 0, 0), Quaternion.identity);
+            Piece BRook = Instantiate(BlackPiecesPrefabs[5], new Vector3(0, 0, 0), Quaternion.identity);
             BRook.setPosition(i * 7 + 1, 8);
             BlackPieces.Add(BRook);
            
         }
         //Summon Rooks
-        // Piece temp2 = Instantiate(WhitePiecesPrefaps[3], new Vector3(0, 0, 0), Quaternion.identity);
+        // Piece temp2 = Instantiate(WhitePiecesPrefabs[3], new Vector3(0, 0, 0), Quaternion.identity);
         // temp2.setPosition(3, 4);
 
 
@@ -237,13 +241,11 @@ public class Map : MonoBehaviour
         {
             ChessBoard[OldPos.x, OldPos.y] = null;
             piece.setPosition(NewPos.x, NewPos.y);
-            if ( IsWin() != -1)
-            {
-                StopGame(IsWin());
-                
-            }
+            
             UpdateCurrentSide();
             RefreshAllValidMoves();
+            if (CheckMate()) Debug.Log("Check Mate");
+
         }
     } 
     public void removePreviousDot()
@@ -336,4 +338,25 @@ public class Map : MonoBehaviour
  
         return (currentSide == 0)? 1 : 0;
     }
-}
+
+    public bool CheckMate()
+    {
+        Debug.Log(CurrentSide);
+        List<Piece> otherPieces = (CurrentSide == 1)? WhitePieces : BlackPieces;
+
+        Vector2Int KingPos = (CurrentSide == 1)? BlackKing.getPos() : WhiteKing.getPos();
+
+        for (int i = 0; i < otherPieces.Count; i++){
+            List<Vector2Int> validMoves = otherPieces[i].getCanMoves();
+            for (int j = 0; j < validMoves.Count; j++){
+                int kx = KingPos[0];
+                int ky = KingPos[1];
+                int mx = validMoves[j][0];
+                int my = validMoves[j][1];
+                // Debug.Log(kx + " " + ky + " " + mx + " " + my);
+                if ( (kx == mx) && (ky == my)) return true;
+            }
+        }
+        return false;
+    }
+}   

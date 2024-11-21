@@ -1035,14 +1035,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkPoint: {fileID: 1177518834}
   SquareWidth: 6.25
-  WhitePiecesPrefaps:
+  WhitePiecesPrefabs:
   - {fileID: 7374164875318505399, guid: 785b42b88833d0149bb17ce74302d19d, type: 3}
   - {fileID: -4432943325348180900, guid: 3d4ad723b28e2c54fab62201ffda55f9, type: 3}
   - {fileID: 7859890319994219073, guid: 4a71929e2cee5de4c9b8f840a0c8c6e9, type: 3}
   - {fileID: 8444446104945886876, guid: f683b3fa0e4d5f843b5c2e36e9523d97, type: 3}
   - {fileID: -3028522391615919112, guid: ac09d691864a8ec41878d6d543c7b3ff, type: 3}
   - {fileID: -7285463303176143204, guid: 554794573e1aff0469154abb47348d2b, type: 3}
-  BlackPiecesPrefaps:
+  BlackPiecesPrefabs:
   - {fileID: -3984962848761326374, guid: 7dbd20fd35cc57e4d9a4ff89613ea26a, type: 3}
   - {fileID: 1207049147844995006, guid: 25efc6439cd2c9147a1556e40f5dc546, type: 3}
   - {fileID: -6494781902486403137, guid: 2b811873e6b112646a8285c6a2901bd4, type: 3}
@@ -1299,7 +1299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450.56, y: -150.2}
+  m_AnchoredPosition: {x: 406.72, y: -150.2}
   m_SizeDelta: {x: 200.6, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880018139
@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 25
+  m_text: ' '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
