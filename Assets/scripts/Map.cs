@@ -25,8 +25,8 @@ public class Map : MonoBehaviour
     [SerializeField] int CurrentSide;
 
     Piece[,] ChessBoard = new Piece[9, 9];
-    Piece WhiteKing;
-    Piece BlackKing;
+    public Piece WhiteKing;
+    public Piece BlackKing;
 
     [SerializeField] GameObject DotPrefap;
 
@@ -244,7 +244,12 @@ public class Map : MonoBehaviour
             
             UpdateCurrentSide();
             RefreshAllValidMoves();
-            if (CheckMate()) Debug.Log("Check Mate");
+            List<int> result = CheckMate();
+            if (result[0] == 1) {
+                Debug.Log("Checkmate");
+                Debug.Log(result[1]);
+                Debug.Log(result[2]);
+            }
 
         }
     } 
@@ -339,8 +344,9 @@ public class Map : MonoBehaviour
         return (currentSide == 0)? 1 : 0;
     }
 
-    public bool CheckMate()
+    public List<int> CheckMate()
     {
+        List<int> result = new List<int>();
         Debug.Log(CurrentSide);
         List<Piece> otherPieces = (CurrentSide == 1)? WhitePieces : BlackPieces;
 
@@ -354,9 +360,21 @@ public class Map : MonoBehaviour
                 int mx = validMoves[j][0];
                 int my = validMoves[j][1];
                 // Debug.Log(kx + " " + ky + " " + mx + " " + my);
-                if ( (kx == mx) && (ky == my)) return true;
+                if ( (kx == mx) && (ky == my)) {
+                    result.Add(1);
+                    result.Add(CurrentSide == 1? 0 : 1);
+                    result.Add(i);
+                    return result;
+                }
             }
         }
-        return false;
+        result.Add(0);
+        return result;
     }
+
+    public Piece GetAt(int index, int color){
+        if (color == 0) return BlackPieces[index];
+        return WhitePieces[index];
+    }
+
 }   
