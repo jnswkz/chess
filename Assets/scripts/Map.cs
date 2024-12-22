@@ -377,4 +377,8 @@ public class Map : MonoBehaviour
         return WhitePieces[index];
     }
 
+    public Piece GetKing(int color){
+        if (color == 0) return BlackKing;
+        return WhiteKing;
+    }
 }   
