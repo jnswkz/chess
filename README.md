@@ -17,5 +17,3 @@
     [Github](https://github.com/Kamekain)
 - Tran Dong
     [Github](https://github.com/ROSEJC)
-- Duong Cuong
-    [Github](https://github.com/cuogne)
